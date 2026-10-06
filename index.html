@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egypt Muscle Equipment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="#">Egypt Muscle Equipment</a>
+
+    <div class="search">
+      <input id="searchInput" type="text" placeholder="ابحث عن منتج رياضي...">
+      <button id="searchButton">بحث</button>
+    </div>
+
+    <button id="cartButton" class="cart-button">
+      السلة 🛒 <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <nav>
+    <a href="#products" class="category-link" data-category="الكل">كل المنتجات</a>
+    <a href="#products" class="category-link" data-category="أجهزة">أجهزة</a>
+    <a href="#products" class="category-link" data-category="أوزان">أوزان</a>
+    <a href="#products" class="category-link" data-category="كرة قدم">كرة قدم</a>
+    <a href="#products" class="category-link" data-category="رياضات قتالية">رياضات قتالية</a>
+    <a href="#products" class="category-link" data-category="سباحة">سباحة</a>
+    <a href="#products" class="category-link" data-category="تنس">تنس</a>
+    <a href="#products" class="category-link" data-category="دراجات">دراجات</a>
+    <a href="#products" class="category-link" data-category="إكسسوارات">إكسسوارات</a>
+    <a href="#orders">الطلبات</a>
+    <a href="#about">عن المشروع</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <p class="tag">معدات رياضية لكل هدف</p>
+      <h1>ابدأ رحلتك<br>نحو جسم أقوى</h1>
+      <p>معدات وأدوات لمختلف الرياضات في مكان واحد.</p>
+      <a href="#products" class="main-button">شوف المنتجات</a>
+    </div>
+    <div class="hero-icon">🏋️</div>
+  </section>
+
+  <main>
+    <section id="products">
+      <div class="section-title">
+        <div>
+          <p class="tag">اختار معداتك</p>
+          <h2>المنتجات</h2>
+        </div>
+
+        <select id="sortSelect">
+          <option value="normal">الترتيب الافتراضي</option>
+          <option value="low">السعر من الأقل للأعلى</option>
+          <option value="high">السعر من الأعلى للأقل</option>
+        </select>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-category="الكل">الكل</button>
+        <button class="filter" data-category="أجهزة">أجهزة</button>
+        <button class="filter" data-category="أوزان">أوزان</button>
+        <button class="filter" data-category="كرة قدم">كرة قدم</button>
+        <button class="filter" data-category="رياضات قتالية">رياضات قتالية</button>
+        <button class="filter" data-category="سباحة">سباحة</button>
+        <button class="filter" data-category="تنس">تنس</button>
+        <button class="filter" data-category="دراجات">دراجات</button>
+        <button class="filter" data-category="إكسسوارات">إكسسوارات</button>
+      </div>
+
+      <div id="productList" class="products"></div>
+      <p id="noResults" class="message" hidden>مفيش منتجات مطابقة.</p>
+    </section>
+
+    <section id="orders" class="orders-section">
+      <div class="orders-heading">
+        <div>
+          <p class="tag">إدارة المتجر</p>
+          <h2>الطلبات المسجلة</h2>
+        </div>
+        <button id="clearOrders" class="clear-button">مسح سجل الطلبات</button>
+      </div>
+
+      <div id="ordersList"></div>
+      <p id="noOrders" class="message">لسه مفيش طلبات مسجلة.</p>
+    </section>
+
+    <section id="about" class="about">
+      <h2>عن المشروع</h2>
+      <p>
+        متجر إلكتروني تجريبي لمعدات رياضات مختلفة. يتيح للمستخدم البحث عن
+        المنتجات، تصفيتها حسب النوع، إضافتها إلى السلة، وتسجيل طلب تجريبي.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    مشروع مادة نظم ومعلومات — Egypt Muscle Equipment
+  </footer>
+
+  <div id="shade" class="shade"></div>
+
+  <aside id="cartPanel" class="cart-panel">
+    <div class="panel-title">
+      <h2>سلة المشتريات</h2>
+      <button id="closeCart" class="close-button">✕</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-footer">
+      <p>الإجمالي: <strong id="totalPrice">0 جنيه</strong></p>
+      <button id="checkoutButton" class="main-button full-button">
+        إتمام الطلب
+      </button>
+    </div>
+  </aside>
+
+  <div id="orderModal" class="modal">
+    <form id="orderForm" class="modal-box">
+      <button type="button" id="closeOrder" class="close-button">✕</button>
+      <h2>بيانات التوصيل والدفع</h2>
+
+      <label>
+        الاسم
+        <input name="name" required minlength="3" placeholder="اكتب اسمك">
+      </label>
+
+      <label>
+        رقم الهاتف
+        <input name="phone" required minlength="8" placeholder="اكتب رقم الهاتف">
+      </label>
+
+      <label>
+        العنوان
+        <textarea name="address" required minlength="5" placeholder="اكتب عنوان التوصيل"></textarea>
+      </label>
+
+      <label>
+        طريقة الدفع
+        <select name="payment" required>
+          <option value="">اختار طريقة الدفع</option>
+          <option value="الدفع عند الاستلام">الدفع عند الاستلام</option>
+          <option value="محفظة إلكترونية - تجريبي">محفظة إلكترونية - تجريبي</option>
+          <option value="بطاقة بنكية - تجريبي">بطاقة بنكية - تجريبي</option>
+          <option value="تحويل بنكي - تجريبي">تحويل بنكي - تجريبي</option>
+        </select>
+      </label>
+
+      <button type="submit" class="main-button full-button">
+        تأكيد الطلب
+      </button>
+    </form>
+  </div>
+
+  <div id="notice" class="notice"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
